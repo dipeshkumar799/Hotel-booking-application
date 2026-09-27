@@ -1,0 +1,89 @@
+<% layout("layouts/boilerplate") %>
+<div class="card mb-3 listing-card">
+  <img
+    src="<%= user.image.url %>"
+    class="card-img-top listing-image"
+    alt="<%= user.title %>"
+  >
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= user.title %>
+    </h5>
+    <p class="card-text">
+      <%= user.description %>
+    </p>
+
+    <p class="card-text">
+      <small class="text-body-secondary">
+        &#8377;<%= user.price %>/night
+      </small>
+    </p>
+
+    <form
+      method="POST"
+      action="/listings/<%= user._id %>?_method=DELETE"
+      class="delete-form  " novalidate
+    >
+      <button type="submit" class="btn-delete">
+        Delete Listing
+      </button>
+      
+         <a
+  href="/listings/<%= user._id %>/edit"
+  class="btn btn-danger"
+>
+  Edit
+</a>
+    </form>
+      </div>
+
+</div>
+    <hr>
+<div>
+  <h3>Leave a reviews</h3>
+    <form  method="POST"
+      action="/listings/<%= user._id %>/reviews" class="needs-validation" novalidate>
+        <div >
+<label for="range2" class="form-label">Rating:</label>
+<input type="range"  class="form-range" min="0" max="5"   name="rating" id="rating">
+</div>
+<div>
+    <div class="mb-3">
+  <label for="exampleFormControlTextarea1" > Comments:</label>
+  <textarea class="form-control" name="comments" id="comments" rows="3" required></textarea>
+     <div class="invalid-feedback">
+       <h4>Please add  Comments for review</h4> 
+      </div>
+</div>
+</div>
+<div class="btn">
+    <button type="submit" class="btn btn-outline-dark">Submit</button>
+</div>
+    </form>
+<div>
+  <h2>All Reviews</h2>
+  <hr>
+  <div class="row">
+    <% for(reviews of user.review){ %>
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title">Dipesh</h6>
+            <p class="card-text mb-2">
+              <strong>Comment:</strong>
+              <%= reviews.comments %>
+            </p>
+            <p class="card-text mb-0">
+              <strong>Rating:</strong>
+              ⭐ <%= reviews.rating %> / 5
+            </p>
+            <form method="POST" action="/listings/<%= user._id %>/review/<%= reviews._id %>?_method=DELETE">
+              <button type="submit" class="btn btn-secondary">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>
+

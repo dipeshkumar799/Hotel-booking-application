@@ -1,0 +1,111 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="edit-container">
+
+  <h1>Edit Listing</h1>
+
+  <form
+    method="POST"
+       action="/listings/<%= user._id %>/edit?_method=PUT"
+    class="edit-form needs-validation"
+    novalidate
+  >
+
+
+<label for="title">Title</label>
+
+<input
+  type="text"
+  id="title"
+  name="title"
+  value="<%= user.title %>"
+  required
+>
+
+<div class="invalid-feedback">
+  Please enter a title.
+</div>
+
+
+<!-- Image -->
+<label for="image">Image URL</label>
+
+<input
+  type="text"
+  id="image"
+  name="image[url]"
+  value="<%= user.image?.url || '' %>"
+>
+
+
+<!-- Description -->
+<label for="description">Description</label>
+
+<textarea
+  id="description"
+  name="description"
+  rows="5"
+  required
+><%= user.description || '' %></textarea>
+
+<div class="invalid-feedback">
+  Please enter a description.
+</div>
+
+
+<!-- Location -->
+<label for="location">Location</label>
+
+<input
+  type="text"
+  id="location"
+  name="location"
+  value="<%= user.location %>"
+  required
+>
+
+<div class="invalid-feedback">
+  Please enter a location.
+</div>
+
+
+<!-- Country -->
+<label for="country">Country</label>
+
+<input
+  type="text"
+  id="country"
+  name="country"
+  value="<%= user.country %>"
+  required
+>
+
+<div class="invalid-feedback">
+  Please enter a country.
+</div>
+
+
+<!-- Price -->
+<label for="price">Price</label>
+
+<input
+  type="number"
+  id="price"
+  name="price"
+  value="<%= user.price %>"
+  required
+>
+
+<div class="invalid-feedback">
+  Please enter a price.
+</div>
+
+
+<button type="submit" class="btn-update">
+  Update Listing
+</button>
+
+
+  </form>
+
+</div>
