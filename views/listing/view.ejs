@@ -77,7 +77,7 @@
               <strong>Rating:</strong>
               ⭐ <%= reviews.rating %> / 5
             </p>
-            <form method="POST" action="/listings/<%= user._id %>/review/<%= reviews._id %>?_method=DELETE">
+            <form method="POST" action="/listings/<%= user._id %>/reviews/<%= reviews._id %>?_method=DELETE">
               <button type="submit" class="btn btn-secondary">Delete</button>
             </form>
           </div>
