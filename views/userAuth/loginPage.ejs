@@ -1,44 +1,117 @@
+
 <% layout("layouts/boilerplate") %>
-<div>
+
+
+<div class="login-wrapper">
+
+<div class="login-card">
+
+    <div class="login-icon">
+        <i class="fa-solid fa-user"></i>
+    </div>
+
+    <h1 class="login-title">
+        Welcome Back
+    </h1>
+
+    <p class="login-subtitle">
+        Login to continue to your account
+    </p>
+
+
     <form action="/" method="POST" class="needs-validation" novalidate>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address:</label>
-            <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="name@gmail.com"
-                required
-            >
 
-            <div class="invalid-feedback">
-                Please enter a valid email address.
+        <!-- Email -->
+        <div class="mb-3">
+
+            <label for="email" class="form-label">
+                Email Address
+            </label>
+
+            <div class="input-group">
+
+                <i class="fa-solid fa-envelope input-icon"></i>
+
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="name@gmail.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <div class="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+
             </div>
+
         </div>
 
-        <br>
 
+        <!-- Password -->
         <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
 
-            <input
-                type="password"
-                id="password"
-                name="password"
-                class="form-control"
-                required
-            >
+            <label for="password" class="form-label">
+                Password
+            </label>
 
-            <div class="invalid-feedback">
-                Please enter a password.
+            <div class="input-group">
+
+                <i class="fa-solid fa-lock input-icon"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    onclick="togglePassword()"
+                    aria-label="Show password"
+                >
+                    <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                </button>
+
+                <div class="invalid-feedback">
+                    Please enter your password.
+                </div>
+
             </div>
+
         </div>
 
-        <button type="submit" class="btn btn-secondary">
+
+        <a href="#" class="forgot-password">
+            Forgot password?
+        </a>
+
+
+        <button type="submit" class="login-btn">
+            <i class="fa-solid fa-right-to-bracket me-2"></i>
             Login
         </button>
 
     </form>
+
+
+    <div class="divider">
+        OR
+    </div>
+
+
+    <p class="signup-text">
+        Don't have an account?
+        <a href="/userReg">Create an account</a>
+    </p>
+</div>
 </div>
 
