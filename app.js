@@ -43,7 +43,7 @@ app.use((req,res,next)=>{
 
 app.get("/", (req, res,next) => {
     try {
-        res.send("this is first page");
+        res.redirect("/listings");
 console.log("hello");
     } catch (err) {
         next(err) ; 
@@ -53,6 +53,15 @@ console.log("hello");
 app.use("/listings",listing);
 app.use("/listings/:id/reviews",reviews);
 
+app.get("/user/login",async(req,res,next)=>{
+try {
+    res.render("userAuth/loginPage.ejs");
+
+}
+ catch (err) {
+next(err);    
+}
+})
 
 app.all("/{*splat}",(req,res,next)=>{
     next(new ExpressError(404,"page not found"));

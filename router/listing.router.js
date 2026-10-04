@@ -65,6 +65,7 @@ router.get("/:id/edit",async(req,res,next)=>{
         if(!user){
         return   res.status(404).send("user not found");
         };
+         
               res.render("listing/edit.ejs",{ user });
     } catch (err) {
         next(err);
@@ -92,6 +93,7 @@ throw new ExpressError(400,"filed is missing");
         }
      
         console.log(user);
+         req.flash('success', 'list edited successfull')
         res.redirect(`/listings/${id}`)
           
     } catch (err) {
@@ -108,6 +110,7 @@ router.delete("/:id", async (req, res,next) => {
         if (!listing) {
            return  res.status(400).send("Listing not found");
         }
+         req.flash('success', 'list deleted successfull')
 
         res.redirect("/listings");
 

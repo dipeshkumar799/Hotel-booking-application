@@ -28,7 +28,7 @@ router.post("/", async(req, res,next) => {
         listing.review.push(newReview);
      await newReview.save();
      await listing.save();
-     console.log("new review saved");
+     req.flash("success","review added successfully");
      res.redirect(`/listings/${id}`);
     } catch (err) {
         next(err);
@@ -48,6 +48,7 @@ try {
     if(!user){
         return res.status(404).send("user not found")
     }
+    req.flash("success","review deleted successfully");
     res.redirect(`/listings/${id}`);
 
 } catch (err) {
