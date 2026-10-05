@@ -14,6 +14,7 @@ const flash = require('connect-flash');
 const Review = require("./models/review.model.js");
 const listing = require("./router/listing.router.js");
 const reviews = require("./router/review.router.js")
+const authUser = require("./router/user.router.js");
 const cookieParser = require('cookie-parser')
 const session = require("express-session");
 const passport = require("passport");
@@ -49,9 +50,10 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
     res.locals.message = req.flash("success");
-    res.locals.errorMessag=req.flash("error");
+    res.locals.error=req.flash("error");
     next();
 })
+
 
 app.get("/", (req, res,next) => {
     try {
@@ -64,16 +66,8 @@ console.log("hello");
 
 app.use("/listings",listing);
 app.use("/listings/:id/reviews",reviews);
+app.use("/",authUser);
 
-app.get("/user/login",async(req,res,next)=>{
-try {
-    res.render("userAuth/loginPage.ejs");
-
-}
- catch (err) {
-next(err);    
-}
-})
 
 app.all("/{*splat}",(req,res,next)=>{
     next(new ExpressError(404,"page not found"));

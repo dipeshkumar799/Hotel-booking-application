@@ -19,13 +19,13 @@
     </p>
 
 
-    <form action="/" method="POST" class="needs-validation" novalidate>
+    <form action="/login" method="POST" class="needs-validation" novalidate>
 
         <!-- Email -->
         <div class="mb-3">
 
-            <label for="email" class="form-label">
-                Email Address
+            <label for="username class="form-label">
+              username:
             </label>
 
             <div class="input-group">
@@ -33,17 +33,17 @@
                 <i class="fa-solid fa-envelope input-icon"></i>
 
                 <input
-                    type="email"
+                    type="username"
                     class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="name@gmail.com"
-                    autocomplete="email"
+                    id="username"
+                    name="username"
+                    placeholder="username"
+                    autocomplete="username"
                     required
                 >
 
                 <div class="invalid-feedback">
-                    Please enter a valid email address.
+                    Please enter a valid username.
                 </div>
 
             </div>
