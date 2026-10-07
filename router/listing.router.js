@@ -3,23 +3,25 @@ const router = express.Router({ mergeParams: true });
 const List  = require("../models/listing.model.js");
 const {listingSchema, reviewSchema }= require("../schema.js");
 const ExpressError= require("../util/ExpressError.js");
+const { isLoggedIn } = require("../middleware/isloggedin.middleware.js");
 router.get("/",async(req,res,next)=>{
     try {
            let allList = await List.find({});
            res.render("listing/index.ejs",{allList});
     } catch (err) {
         next(err);
-    }
-})
-router.get("/new",async(req,res,next)=>{
-    try {
-   res.render("listing/new.ejs");
-    } catch (err) {
-        next(err);
         
     }
 })
-router.post("/new",async(req,res,next)=>{
+
+router.get("/new",isLoggedIn ,async(req,res,next)=>{
+    try {
+       res.render("listing/new.ejs");
+    } catch (err) {
+        next(err);
+    }
+})
+router.post("/new",isLoggedIn,async(req,res,next)=>{
     try {
    let result =  listingSchema.validate(req.body);
    console.log(result.error);
@@ -58,7 +60,7 @@ router.get("/:id",async (req, res,next) => {
   }
    
 });
-router.get("/:id/edit",async(req,res,next)=>{
+router.get("/:id/edit",isLoggedIn,async(req,res,next)=>{
     try {
          let {id} =req.params;
         let user = await List.findById(id);
@@ -72,7 +74,7 @@ router.get("/:id/edit",async(req,res,next)=>{
     }
     
 })
-router.put("/:id/edit",async(req,res,next)=>{
+router.put("/:id/edit",isLoggedIn,async(req,res,next)=>{
     try {
     let {id} =req.params;
     let{title,description,price,location,country,image} =req.body;
@@ -101,7 +103,7 @@ throw new ExpressError(400,"filed is missing");
     }
 })
 
-router.delete("/:id", async (req, res,next) => {
+router.delete("/:id",isLoggedIn,async (req, res,next) => {
     let { id } = req.params;
 
     try {

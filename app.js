@@ -51,13 +51,14 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req,res,next)=>{
     res.locals.message = req.flash("success");
     res.locals.error=req.flash("error");
+    res.locals.currentUser =req.user;
     next();
 })
 
 
 app.get("/", (req, res,next) => {
     try {
-        res.redirect("/listings");
+        res.redirect("/login");
 console.log("hello");
     } catch (err) {
         next(err) ; 
