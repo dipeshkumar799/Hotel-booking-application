@@ -23,12 +23,15 @@ router.get("/new",isLoggedIn ,async(req,res,next)=>{
 })
 router.post("/new",isLoggedIn,async(req,res,next)=>{
     try {
+       
    let result =  listingSchema.validate(req.body);
+   
    console.log(result.error);
    if(result.error){
     throw new ExpressError(400,result.error);
    }
    let newList = new List(result.value);
+        newList.owner = req.user;
     // let newList =  await new List({
     //         title:title,
     //         description:description,
@@ -51,7 +54,8 @@ router.post("/new",isLoggedIn,async(req,res,next)=>{
 router.get("/:id",async (req, res,next) => {
   try {
      const { id } = req.params;
-     let user =  await List.findById(id).populate("review");
+     let user =  await List.findById(id).populate("review").populate("owner");
+     console.log(user);
      res.render("listing/view.ejs", { user });
     
   } catch (err) {

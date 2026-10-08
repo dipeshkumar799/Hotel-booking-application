@@ -5,6 +5,9 @@
     class="card-img-top listing-image"
     alt="<%= user.title %>"
   >
+  <div class="owner">
+    <h5>owner:@<%= user.owner.username %></h5>
+  </div>
   <div class="card-body">
     <h5 class="card-title">
       <%= user.title %>

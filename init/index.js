@@ -18,8 +18,9 @@ async  function initData(){
     try {
            let user  = await List.deleteMany({});
            console.log("user deleted successfull",user);
-           let initData = await List.insertMany(sampleListings);
-           console.log("data inserted succesfully",initData);
+        let userDate = sampleListings.map((obj)=>({...obj,owner:"6ac2c0fd8e33d936d8d7b715"}))
+              await List.insertMany(userDate);
+
            
     } catch (error) {
         console.log("faild to delete and insert",error);
