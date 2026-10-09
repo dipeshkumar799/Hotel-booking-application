@@ -22,11 +22,14 @@
       </small>
     </p>
 
+   
+      <% if (currentUser && currentUser._id.equals(user.owner._id)) { %>
     <form
       method="POST"
       action="/listings/<%= user._id %>?_method=DELETE"
       class="delete-form  " novalidate
     >
+    
       <button type="submit" class="btn-delete">
         Delete Listing
       </button>
@@ -38,6 +41,7 @@
   Edit
 </a>
     </form>
+        <%}%>
       </div>
 
 </div>
@@ -80,6 +84,7 @@
               <strong>Rating:</strong>
               ⭐ <%= reviews.rating %> / 5
             </p>
+          
             <form method="POST" action="/listings/<%= user._id %>/reviews/<%= reviews._id %>?_method=DELETE">
               <button type="submit" class="btn btn-secondary">Delete</button>
             </form>

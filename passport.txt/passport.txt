@@ -4,3 +4,7 @@ npm i passport-local-mongoose
 
 req.authenticate();//Passport.js ka middleware hai jo user ko authenticate/login karne ke liye use hota hai.
 req.isAuthenticated();//Ye check karta hai ki current user login hai ya nahi
+
+
+npm i cloudinary 
+npm i multer-storage-cloudinary

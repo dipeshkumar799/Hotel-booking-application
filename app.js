@@ -1,3 +1,5 @@
+require('dotenv').config()
+console.log(process.env.CLOUD_NAME);
 const express = require('express');
 const app = express()
 const port = 3000
@@ -51,7 +53,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req,res,next)=>{
     res.locals.message = req.flash("success");
     res.locals.error=req.flash("error");
-    res.locals.currentUser =req.user;
+    res.locals.currentUser = req.user;
     next();
 })
 
@@ -68,7 +70,6 @@ console.log("hello");
 app.use("/listings",listing);
 app.use("/listings/:id/reviews",reviews);
 app.use("/",authUser);
-
 
 app.all("/{*splat}",(req,res,next)=>{
     next(new ExpressError(404,"page not found"));
