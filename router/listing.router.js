@@ -26,47 +26,62 @@ router.get("/new",isLoggedIn ,async(req,res,next)=>{
 })
 
 router.post("/new",isLoggedIn,upload.single("image[url]"),async(req,res,next)=>{
-    // try {
-    res.send(req.file);       
-//    let result =  listingSchema.validate(req.body);
-//    console.log(result);
-//    console.log(result.error);
-//    if(result.error){
-//     throw new ExpressError(400,result.error);
-//    }
-//    let newList = new List(result.value);
-//         newList.owner = req.user;
-//     // let newList =  await new List({
-//     //         title:title,
-//     //         description:description,
-//     //         price:price,
-//     //         country:country,
-//     //         image:image,
-//     //         location:location
-//     //     })
-//        await newList.save();
-//        console.log(newList);
-//          req.flash('success', 'new listing existed successfull')
+    try {
+    let imageUrl = req.file.path;
+    let filename =req.file.filename;
+        if (!req.file) {
+            throw new ExpressError(400, "Please upload an image");
+        }
+   let result =  listingSchema.validate(req.body);
+   console.log(result);
+   console.log(result.error);
+   if(result.error){
+    throw new ExpressError(400,result.error);
+   }
+   let newList = new List(result.value);
+        newList.owner = req.user;
+        newList.image.url = imageUrl;
+        newList.image.filename =filename;
+
+    // let newList =  await new List({
+    //         title:title,
+    //         description:description,
+    //         price:price,
+    //         country:country,
+    //         image:image,
+    //         location:location
+    //     })
+       await newList.save();
+       console.log(newList);
+         req.flash('success', 'new listing existed successfull')
        
-//     res.redirect("/listings");
-//     } catch (err) {
-//  next(err);
+    res.redirect("/listings");
+    } catch (err) {
+ next(err);
    
-//     }
+    }
 });
 
-router.get("/:id",async (req, res,next) => {
-  try {
-     const { id } = req.params;
-     let user =  await List.findById(id).populate("review").populate("owner");
-     console.log(user);
-     res.render("listing/view.ejs", { user });
-    
-  } catch (err) {
-    next(err);
-    
-  }
-   
+
+router.get("/:id", async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const user = await List.findById(id)
+            .populate("review")
+            .populate("owner");
+
+        if (!user) {
+            throw new ExpressError(404, "Listing not found");
+        }
+
+        res.render("listing/view.ejs", {
+            user,
+            mapToken: process.env.MAP_TOKEN
+        });
+    } catch (err) {
+        next(err);
+    }
 });
 router.get("/:id/edit",isLoggedIn,async(req,res,next)=>{
     try {

@@ -1,3 +1,4 @@
+
 <% layout("layouts/boilerplate") %>
 
 <h1>new data...........</h1>
@@ -5,45 +6,56 @@
 <form method="POST"
       action="/listings/new"
       class="needs-validation"
-      novalidate enctype="multipart/form-data">
+      novalidate
+      enctype="multipart/form-data">
 
-    <label for="title">Title:</label>
+    <label for="title" class="text-dark">Title:</label>
     <input
         type="text"
+        id="title"
         placeholder="enter the title"
         name="title"
         class="form-control"
         required
     >
-    <div class="invalid-feedback">
+    <div class="invalid-feedback text-dark">
         Please enter the title.
     </div>
 
     <br><br>
 
-    <label for="image">Image:</label>
+    <label for="image-url" class="text-dark">Image:</label>
     <input
         type="text"
+        id="image-url"
         name="image[url]"
         placeholder="image URL"
         class="form-control"
     >
 
     <br>
-      <label for="image">Upload your image:</label>
+
+    <label for="image" class="text-dark">Upload your image:</label>
     <input
         type="file"
+        id="image"
         name="image[url]"
         class="form-control"
+        accept="image/*"
+        required
     >
+    <div class="invalid-feedback">
+        Please upload an image.
+    </div>
 
-    <label for="description">Description:</label>
+    <label for="description" class="text-dark">Description:</label>
     <textarea
         id="description"
         name="description"
         rows="4"
         class="form-control"
-        required></textarea>
+        required
+    ></textarea>
 
     <div class="invalid-feedback">
         Please enter the description.
@@ -51,9 +63,10 @@
 
     <br>
 
-    <label for="location">Location:</label>
+    <label for="location" class="text-dark">Location:</label>
     <input
         type="text"
+        id="location"
         placeholder="enter the location"
         name="location"
         class="form-control"
@@ -65,9 +78,10 @@
 
     <br>
 
-    <label for="country">Country:</label>
+    <label for="country" class="text-dark">Country:</label>
     <input
         type="text"
+        id="country"
         placeholder="enter the country"
         name="country"
         class="form-control"
@@ -76,12 +90,13 @@
     <div class="invalid-feedback">
         Please enter the country.
     </div>
-    
+
     <br>
 
-    <label for="price">Price:</label>
+    <label for="price" class="text-dark">Price:</label>
     <input
         type="text"
+        id="price"
         placeholder="enter the price"
         name="price"
         class="form-control"

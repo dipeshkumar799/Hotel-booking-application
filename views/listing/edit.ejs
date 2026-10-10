@@ -2,7 +2,7 @@
 
 <div class="edit-container">
 
-  <h1>Edit Listing</h1>
+  <h1 class="text-dark">Edit Listing</h1>
 
   <form
     method="POST"
@@ -12,7 +12,7 @@
   >
 
 
-<label for="title">Title</label>
+<label for="title"class="text-dark">Title</label>
 
 <input
   type="text"
@@ -22,13 +22,13 @@
   required
 >
 
-<div class="invalid-feedback">
+<div class="invalid-feedback text-dark" >
   Please enter a title.
 </div>
 
 
 <!-- Image -->
-<label for="image">Image URL</label>
+<label for="image" class="text-dark">Image URL</label>
 
 <input
   type="text"
@@ -39,7 +39,7 @@
 
 
 <!-- Description -->
-<label for="description">Description</label>
+<label for="description" class="text-dark">Description</label>
 
 <textarea
   id="description"
@@ -48,13 +48,13 @@
   required
 ><%= user.description || '' %></textarea>
 
-<div class="invalid-feedback">
+<div class="invalid-feedback text-dark">
   Please enter a description.
 </div>
 
 
 <!-- Location -->
-<label for="location">Location</label>
+<label for="location" class="text-dark">Location</label>
 
 <input
   type="text"
@@ -64,13 +64,13 @@
   required
 >
 
-<div class="invalid-feedback">
+<div class="invalid-feedback text-dark">
   Please enter a location.
 </div>
 
 
 <!-- Country -->
-<label for="country">Country</label>
+<label for="country"class="text-dark">Country</label>
 
 <input
   type="text"
@@ -80,13 +80,13 @@
   required
 >
 
-<div class="invalid-feedback">
+<div class="invalid-feedback text-dark">
   Please enter a country.
 </div>
 
 
 <!-- Price -->
-<label for="price">Price</label>
+<label for="price" class="text-dark">Price</label>
 
 <input
   type="number"
@@ -96,7 +96,7 @@
   required
 >
 
-<div class="invalid-feedback">
+<div class="invalid-feedback text-dark">
   Please enter a price.
 </div>
 

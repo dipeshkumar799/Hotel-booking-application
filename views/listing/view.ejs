@@ -1,3 +1,4 @@
+
 <% layout("layouts/boilerplate") %>
 <div class="card mb-3 listing-card">
   <img
@@ -22,54 +23,76 @@
       </small>
     </p>
 
-   
-      <% if (currentUser && currentUser._id.equals(user.owner._id)) { %>
+    <% if (currentUser && currentUser._id.equals(user.owner._id)) { %>
     <form
       method="POST"
       action="/listings/<%= user._id %>?_method=DELETE"
-      class="delete-form  " novalidate
+      class="delete-form" novalidate
     >
-    
       <button type="submit" class="btn-delete">
         Delete Listing
       </button>
-      
-         <a
-  href="/listings/<%= user._id %>/edit"
-  class="btn btn-danger"
->
-  Edit
-</a>
-    </form>
-        <%}%>
-      </div>
 
+      <a
+        href="/listings/<%= user._id %>/edit"
+        class="btn btn-danger"
+      >
+        Edit
+      </a>
+    </form>
+    <% } %>
+  </div>
 </div>
-    <hr>
+
+<hr>
+
 <div>
   <h3>Leave a reviews</h3>
-    <form  method="POST"
-      action="/listings/<%= user._id %>/reviews" class="needs-validation" novalidate>
-        <div >
-<label for="range2" class="form-label">Rating:</label>
-<input type="range"  class="form-range" min="0" max="5"   name="rating" id="rating">
-</div>
-<div>
-    <div class="mb-3">
-  <label for="exampleFormControlTextarea1" > Comments:</label>
-  <textarea class="form-control" name="comments" id="comments" rows="3" required></textarea>
-     <div class="invalid-feedback">
-       <h4>Please add  Comments for review</h4> 
+  <form
+    method="POST"
+    action="/listings/<%= user._id %>/reviews"
+    class="needs-validation"
+    novalidate
+  >
+    <div>
+      <label for="range2" class="form-label">Rating:</label>
+      <input
+        type="range"
+        class="form-range"
+        min="0"
+        max="5"
+        name="rating"
+        id="rating"
+      >
+    </div>
+
+    <div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1"> Comments:</label>
+        <textarea
+          class="form-control"
+          name="comments"
+          id="comments"
+          rows="3"
+          required
+        ></textarea>
+        <div class="invalid-feedback">
+          <h4>Please add Comments for review</h4>
+        </div>
       </div>
+    </div>
+
+    <div class="btn">
+      <button type="submit" class="btn btn-outline-dark">Submit</button>
+    </div>
+  </form>
 </div>
-</div>
-<div class="btn">
-    <button type="submit" class="btn btn-outline-dark">Submit</button>
-</div>
-    </form>
+
+<!-- All Reviews -->
 <div>
   <h2>All Reviews</h2>
   <hr>
+
   <div class="row">
     <% for(reviews of user.review){ %>
       <div class="col-md-6 mb-3">
@@ -84,8 +107,11 @@
               <strong>Rating:</strong>
               ⭐ <%= reviews.rating %> / 5
             </p>
-          
-            <form method="POST" action="/listings/<%= user._id %>/reviews/<%= reviews._id %>?_method=DELETE">
+
+            <form
+              method="POST"
+              action="/listings/<%= user._id %>/reviews/<%= reviews._id %>?_method=DELETE"
+            >
               <button type="submit" class="btn btn-secondary">Delete</button>
             </form>
           </div>
@@ -95,3 +121,19 @@
   </div>
 </div>
 
+<!-- Map below All Reviews -->
+<div class="mb-3">
+  <h3>Where you'll be</h3>
+  <div id="map" style="width: 100%; height: 400px;"></div>
+</div>
+
+<script>
+  let mapToken = "<%= process.env.MAP_TOKEN %>";
+  mapboxgl.accessToken = mapToken;
+
+const map = new mapboxgl.Map({
+    container: 'map',
+    center: [72.5714, 23.0225], 
+    zoom: 7
+});
+</script>

@@ -230,8 +230,6 @@ body {
         font-family: "Poppins", sans-serif;
         background:
             linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)),
-            url("https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=2000&auto=format&fit=crop")
-            center/cover no-repeat;
     }
 
     .login-wrapper {
@@ -455,4 +453,166 @@ body {
             font-size: 27px;
         }
     }
+    .rolex{
+color: #e31c5f;
+    }
 
+    /* for map */
+#map {
+    height: 400px;
+    width: 60vh;
+     }
+
+   .coffee-navbar {
+    background: rgba(255, 250, 244, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #f0e4d8;
+    box-shadow: 0 4px 18px rgba(65, 39, 20, 0.07);
+    padding: 10px 0;
+    z-index: 1030;
+  }
+
+  /* Brand */
+  .coffee-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .coffee-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fff0d9, #ffdfb2);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(93, 46, 24, 0.13);
+    transition: transform .25s ease;
+  }
+
+  .coffee-brand:hover .coffee-icon {
+    transform: translateY(-2px) rotate(-4deg);
+  }
+
+  .brand-text {
+    color: #492918;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .brand-text span {
+    color: #d97736;
+  }
+
+  /* Navigation Links */
+  .nav-custom {
+    color: #594538 !important;
+    font-weight: 600;
+    font-size: .96rem;
+    padding: 10px 15px !important;
+    border-radius: 10px;
+    transition: all .2s ease;
+  }
+
+  .nav-custom:hover {
+    color: #b85e2b !important;
+    background: #fff0df;
+    transform: translateY(-1px);
+  }
+
+  /* Sign Up Button */
+  .signup-btn {
+    color: white;
+    background: linear-gradient(135deg, #b96532, #8f4322);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 19px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(143, 67, 34, .17);
+    transition: all .2s ease;
+  }
+
+  .signup-btn:hover {
+    color: white;
+    background: linear-gradient(135deg, #9e5028, #733419);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(143, 67, 34, .22);
+  }
+
+  /* Logout */
+  .logout-link {
+    color: #b44343 !important;
+    font-weight: 600;
+    padding: 10px 15px !important;
+    border-radius: 10px;
+    transition: background .2s ease;
+  }
+
+  .logout-link:hover {
+    background: #fff0ef;
+  }
+
+  /* Mobile Toggle */
+  .custom-toggler {
+    border: 1px solid #e7cdb8;
+    border-radius: 10px;
+    padding: 7px 10px;
+    box-shadow: none !important;
+  }
+
+  .custom-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(185, 101, 50, .15) !important;
+  }
+
+  /* Mobile Layout */
+  @media (max-width: 991.98px) {
+    .coffee-navbar .navbar-collapse {
+      padding-top: 15px;
+    }
+
+    .coffee-navbar .navbar-nav {
+      align-items: stretch !important;
+    }
+
+    .nav-custom,
+    .logout-link {
+      display: block;
+      padding: 12px 15px !important;
+    }
+
+    .signup-btn {
+      display: inline-block;
+      margin: 8px 0 5px 0 !important;
+      text-align: center;
+    }
+  }
+
+
+      .coffee-icon {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    box-shadow: 0 5px 14px rgba(93, 46, 24, 0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .coffee-icon:hover {
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 9px 20px rgba(93, 46, 24, 0.25);
+  }
+
+  .coffee-icon svg {
+    filter: drop-shadow(0 2px 2px rgba(93, 46, 24, 0.12));
+  }
+  form label {
+    color: #000 !important;
+}
