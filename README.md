@@ -2,6 +2,11 @@
 1)npm i passport
 2)npm i passport-local
 3)npm i passport-local-mongoose
+
+login:
+# username:dipesh
+# password:dipesh
+ or you can signup and create { username and password }
 # OUR_ROLEX  🏡
 
 A full-stack Airbnb-inspired web application built using Node.js, Express.js, MongoDB, and EJS.
